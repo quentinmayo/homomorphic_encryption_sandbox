@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if command -v python >/dev/null 2>&1; then
+  PYTHON_CMD=(python)
+elif command -v py >/dev/null 2>&1; then
+  PYTHON_CMD=(py -3)
+else
+  echo "Python is required to run notebook cleanup hooks." >&2
+  exit 1
+fi
+
+if ! "${PYTHON_CMD[@]}" scripts/clear_notebook_outputs.py --tracked --check; then
+  echo "Push blocked: notebook outputs were detected. Commit cleaned notebooks first." >&2
+  exit 1
+fi

@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "homomorphic-encryption-sandbox"
+version = "0.1.0"
+description = "Sandbox experiments for homomorphic encryption in Python"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "tenseal>=0.3.15",
+  "numpy>=1.26.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = [
+  "src",
+]
+testpaths = [
+  "tests",
+]
