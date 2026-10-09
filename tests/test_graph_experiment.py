@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-import importlib.util
-
 import pytest
 
 from he_sandbox.experiments.graph.ckks_graph import (
@@ -10,10 +8,6 @@ from he_sandbox.experiments.graph.ckks_graph import (
 )
 
 
-tenseal_installed = importlib.util.find_spec("tenseal") is not None
-
-
-@pytest.mark.skipif(not tenseal_installed, reason="TenSEAL not installed")
 def test_graph_scores_within_tolerance() -> None:
     adjacency = [
         [0.0, 0.8, 0.2],
